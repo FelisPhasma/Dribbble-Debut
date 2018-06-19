@@ -1,0 +1,170 @@
+// Ubuntu Mono
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700');
+
+// page
+html, body {
+	margin: 0px;
+	padding: 0px;
+	background: #333;
+}
+
+// shot container
+#shot {
+	width: 800px;
+	height: 600px;
+	background: #222;
+	//margin: 20px;
+	overflow: hidden;
+	position: relative;
+	.particle {
+		position: absolute;
+		z-index: 1000;
+		width: 6px;
+		height: 6px;
+		border-radius: 100%;
+		background: #fff;
+		transform: translate(-50%, -50%);
+	}
+	.centerText {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+// Shot sections
+#code {
+	width: 0px;//400px;
+	height: 600px;
+	position: absolute;
+}
+#anim {
+	top: 0px;
+	left: 400px;
+}
+// Code section
+#code, .code {
+	top: 0px;
+	left: 0px;
+	font-family: 'Ubuntu Mono', monospace;
+	font-size: 24px;
+	color: #fff; // tmp
+	white-space: pre;
+	overflow: visible;
+}
+#code {
+	padding-top: 10px;
+	padding-left: 15px;
+	line-height: 140%;
+}
+@keyframes blink-cursor {
+	from, to { opacity: 0; }
+	50% { opacity: 1; }
+}
+#cursor {
+	height: 22px;
+	width: 0px;
+	display: inline-block;
+	overflow: visible;
+	vertical-align: middle;
+	position: relative;
+	&:after {
+		content: "";
+		top: 0px;
+		left: -1.5px;
+		position: absolute;
+		width: 3px;
+		height: 22px;
+		background: #fff;
+		animation: blink-cursor 1s step-start infinite;
+		display: inline-block;
+	}
+}
+// Render sectoin
+#ball {
+	z-index: 4;
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	left: 75%;//50%;
+	top: 50px;
+	transform: translateX(-50%);
+	transition: .3s ease width, .3s ease height;
+	background: #EA4C89;
+	border-radius: 100%;
+	svg {
+		width: 100%;
+		height: 100%;
+		path {
+			fill: #C32361;
+		}
+	}
+}
+#blackHole {
+	position: absolute;
+	z-index: 3;
+	background: #000;
+	border-radius: 100%;
+	transform: translate(-50%, -50%);
+	box-shadow: 0px 0px 15px 15px #5A52E1;
+	top: -100px;
+	left: -100px;
+	/*position: absolute;
+	z-index: 3;
+	background: #0F0A5F;
+	border-radius: 100%;
+	transform: translate(-50%, -50%);
+	&:before {
+		position: absolute;
+		content: "";
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(.9);
+		width: 100%;
+		height: 100%;
+		border-radius: 100%;
+		background: #000;
+	}*/
+}
+#ground {
+	$size: 300px;
+	$sizeTotal: $size + 25px;
+	z-index: 2;
+	position: absolute;
+	bottom: 110px;
+	left: 75%;
+	transform: translate(-50%, -50%);
+	width: $size;
+	height: 0.2 * $size;
+	> div {
+		position: absolute;
+		top: ($sizeTotal / -2)  + (.5 * 0.2 * $sizeTotal);
+		left: 0px;
+		width: 300px;
+		height: 300px;
+		background: #fff;
+		border-radius: 100%;
+		transform: scaleY(0.2);
+		border-bottom: 25px solid #777;
+	}
+}
+#ground_shadow {
+	$size: 230px;
+	z-index: 1;
+	position: absolute;
+	bottom: 70px;
+	left: 75%;
+	transform: translate(-50%, -50%);
+	width: $size;
+	height: 0.2 * $size;
+	> div {
+		position: absolute;
+		top: ($size / -2)  + (.5 * 0.2 * $size);
+		left: 0px;
+		display: block;
+		transform: scaleY(0.2);
+		width: $size;
+		height: $size;
+		border-radius: 100%;
+		background: #111;
+	}
+}

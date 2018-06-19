@@ -1,0 +1,2 @@
+ffmpeg -y -i shot_cut.mp4 -vf fps=60,scale=800:-1:flags=lanczos,palettegen palette.png
+ffmpeg -i shot_cut.mp4 -i palette.png -filter_complex "fps=30,scale=800:-1:flags=lanczos[x];[x][1:v]paletteuse" shot.gif
